@@ -19,16 +19,21 @@ Item {
             anchors.centerIn: parent
 
             color: "darkgrey"
+            visible: true
+
+            Text {
+                id: text1
+                color: "#000000"
+                font.pixelSize: 50
+                font.family: "Courier"
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Diagnostics"
+                anchors.top: parent.top
+                anchors.topMargin: 12
+                visible: true
+            }
         }
 
-        Text {
-            text: "Diagnostics"
-            color: "black"
-            font.pixelSize: parent.height * 0.15
-            font.family: "Eurostyle"
-            anchors.top: parent.top
-            anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
+
     }
 }

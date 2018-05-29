@@ -95,7 +95,7 @@ Item {
             alertText: alertExplanation
             sourceIcon: alertIcon
         }
-
+/*
         SpeedLimit {
             id: speedDisplay
             width: parent.width * .25
@@ -108,7 +108,7 @@ Item {
             speedAlertIsDisplayed: showSpeedAlert
 
             visible: !showDisclaimer
-        }
+        }*/
     }
 
     onShowTrafficAlertChanged: console.log("Time to show the traffic alert? " + showTrafficAlert)
