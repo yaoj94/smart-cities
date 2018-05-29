@@ -26,11 +26,12 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
+    // Add diagnostics button to bottom of sidebar
     DiagnosticsButton {
         id: diagnosticsButton
+        height: parent.height * 0.5
         width: parent.width
-        height: parent.height * 0.2
-        anchors.bottom: parent.bottom
+        anchors.top: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
     }
 

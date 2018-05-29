@@ -18,7 +18,7 @@ Item {
             height: parent.height
             anchors.centerIn: parent
 
-            color: colors.lightGrey
+            color: colors.darkGrey
         }
     }
 
