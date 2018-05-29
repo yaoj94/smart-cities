@@ -18,7 +18,17 @@ Item {
             height: parent.height
             anchors.centerIn: parent
 
-            color: colors.darkGray
+            color: "darkgrey"
+        }
+
+        Text {
+            text: "Diagnostics"
+            color: "black"
+            font.pixelSize: parent.height * 0.15
+            font.family: "Eurostyle"
+            anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.025
+            anchors.horizontalCenter: parent.horizontalCenter
         }
     }
 }
