@@ -59,6 +59,14 @@ Item {
             visible: true
         }
 
+        DiagnosticsPage {
+            id: diagnosticsPage
+            height: bgItemHeight
+            width: bgItemWidth
+            anchors.left: appTrayObject.right
+            anchors.leftMargin: appTrayObject.sideBarWidth
+        }
+
         AppTray {
             id: appTrayObject
             height: bgItemHeight

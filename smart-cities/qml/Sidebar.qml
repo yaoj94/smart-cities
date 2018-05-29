@@ -26,6 +26,14 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
+    DiagnosticsButton {
+        id: diagnosticsButton
+        width: parent.width
+        height: parent.height * 0.2
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
     TrayButton {
         id: trayButtonObject
         anchors.fill: parent

@@ -24,5 +24,7 @@
         <file>ModeSwitch.qml</file>
         <file>Disclaimer.qml</file>
         <file>SoundSwitch.qml</file>
+        <file>DiagnosticsButton.qml</file>
+        <file>DiagnosticsPage.qml</file>
     </qresource>
 </RCC>
