@@ -19,6 +19,7 @@ Item {
             anchors.centerIn: parent
 
             color: colors.darkGrey
+            visible: true
         }
     }
 
