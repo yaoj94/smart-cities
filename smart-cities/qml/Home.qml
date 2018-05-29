@@ -62,7 +62,7 @@ Item {
         DiagnosticsPage {
             id: diagnosticsPage
             height: bgItemHeight
-            width: bgItemWidth
+            width: bgItemWidth - appTrayObject.sideBarWidth
             anchors.left: appTrayObject.right
             anchors.leftMargin: appTrayObject.sideBarWidth
         }

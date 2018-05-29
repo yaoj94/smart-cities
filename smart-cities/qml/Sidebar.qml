@@ -26,20 +26,20 @@ Item {
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
-    // Add diagnostics button to bottom of sidebar
-    DiagnosticsButton {
-        id: diagnosticsButton
-        height: parent.height * 0.5
-        width: parent.width
-        anchors.top: parent.bottom
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-
     TrayButton {
         id: trayButtonObject
         anchors.fill: parent
 //        barTimerInterval: commonAnimationDuration
 
 //        onTrayPressed: toggleTrayState()
+    }
+
+    // Add diagnostics button to bottom of sidebar
+    DiagnosticsButton {
+        id: diagnosticsButton
+        height: parent.height * 0.225
+        width: parent.width
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 }

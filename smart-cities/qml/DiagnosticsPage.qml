@@ -18,10 +18,7 @@ Item {
             height: parent.height
             anchors.centerIn: parent
 
-            color: colors.darkGrey
-            visible: true
+            color: colors.darkGray
         }
     }
-
-
 }
