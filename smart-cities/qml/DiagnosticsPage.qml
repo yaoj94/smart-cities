@@ -18,9 +18,9 @@ Item {
             height: parent.height
             anchors.centerIn: parent
 
-            color: "darkgrey"
-            visible: true
+            color: colors.darkGray
 
+            /*
             Text {
                 id: text1
                 color: "#000000"
@@ -31,7 +31,7 @@ Item {
                 anchors.top: parent.top
                 anchors.topMargin: 12
                 visible: true
-            }
+            }*/
         }
 
 
