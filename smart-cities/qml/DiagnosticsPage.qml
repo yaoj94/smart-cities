@@ -20,7 +20,7 @@ Item {
 
             color: "darkgrey"
         }
-
+        /*
         Text {
             text: "Diagnostics"
             color: "black"
@@ -29,6 +29,6 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
-        }
+        } */
     }
 }

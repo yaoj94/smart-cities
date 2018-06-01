@@ -9,7 +9,7 @@ Button {
         background: Rectangle {
             height: parent.height
             width: parent.width
-            color: "red"
+            color: "black"
         }
     }
 }

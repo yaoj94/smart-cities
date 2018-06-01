@@ -37,7 +37,7 @@ Item {
     // Add diagnostics button to bottom of sidebar
     DiagnosticsButton {
         id: diagnosticsButton
-        height: parent.height * 0.225
+        height: parent.height * 0.200
         width: parent.width
         anchors.bottom: parent.bottom
         anchors.horizontalCenter: parent.horizontalCenter
