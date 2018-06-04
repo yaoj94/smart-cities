@@ -31,7 +31,7 @@ Item {
         RviNotificationLayer {
             id: rviNotifications
         }
-
+/*
         // RVI info
         Rectangle {
             id: rviMessageArea
@@ -85,7 +85,7 @@ Item {
         }
 
         // Satellite info
-        /*Rectangle {
+        Rectangle {
             id: satelliteInfoArea
             width: parent.width
             height: parent.height * .3
@@ -109,7 +109,7 @@ Item {
             }
         }*/
 
-        /*
+
         Text {
             text: "Diagnostics"
             color: "black"
@@ -118,7 +118,7 @@ Item {
             anchors.top: parent.top
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
-        } */
+        }
     }
 
 }
