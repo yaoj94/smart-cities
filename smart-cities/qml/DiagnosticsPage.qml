@@ -111,11 +111,23 @@ Item {
 
 
         Text {
-            text: "Diagnostics"
+            id: rviMessage
+            text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI failed to initialize"
             color: "black"
-            font.pixelSize: parent.height * 0.15
+            font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
             anchors.top: parent.top
+            anchors.topMargin: parent.height * 0.025
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            id: gpsMessage
+            text: "GPS status: " + diagnosticsPageInterface.gpsError
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: rviMessage.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         }
