@@ -14,7 +14,7 @@ Item {
     property bool rviInitialized: false
     property bool gpsActive: false
 
-    property string gpsError: "uninitialized"
+    property string gpsError: "inactive"
     property int satInUse: 0
     property int satInView: 0
 

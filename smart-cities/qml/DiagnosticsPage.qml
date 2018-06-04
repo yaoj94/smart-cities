@@ -135,7 +135,7 @@ Item {
 
         Text {
             id: gpsMessage
-            text: "GPS status: " + (!diagnosticsPageInterface.gpsActive ? "inactive" : diagnosticsPageInterface.gpsError)
+            text: "GPS status: " + diagnosticsPageInterface.gpsError
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
