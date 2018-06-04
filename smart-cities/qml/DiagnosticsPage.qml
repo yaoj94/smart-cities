@@ -80,7 +80,7 @@ Item {
         }
 
         // Satellite info
-        Rectangle {
+        /*Rectangle {
             id: satelliteInfoArea
             width: parent.width
             height: parent.height * .3
@@ -102,7 +102,7 @@ Item {
                 color: "black"
                 text: "Satellites in view: " + diagnosticsPageInterface.satInView + "  Satellites in use: " + diagnosticsPageInterface.satInUse
             }
-        }
+        }*/
 
         /*
         Text {

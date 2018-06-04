@@ -206,7 +206,7 @@ Item {
         }
 
     }
-
+/*
     SatelliteInfoSource {
         id: satelliteInfo
         active: true
@@ -218,6 +218,6 @@ Item {
         onSatellitesInUseUpdated: {
             satInUse = satellites
         }
-    }
+    }*/
 
 }
