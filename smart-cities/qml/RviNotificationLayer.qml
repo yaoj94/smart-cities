@@ -3,7 +3,6 @@ import QtPositioning 5.3
 
 import com.genivi.rvitrafficservice 1.0
 
-
 Item {
     id: rviRoot
 
@@ -16,6 +15,8 @@ Item {
     property bool gpsActive: false
 
     property string gpsError: "uninitialized"
+    property int satInUse: 0
+    property int satInView: 0
 
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
@@ -206,5 +207,17 @@ Item {
 
     }
 
+    SatelliteInfoSource {
+        id: satelliteInfo
+        active: true
+        updateInterval: 1000
+
+        onSatellitesInViewUpdated: {
+            satInView = satellites
+        }
+        onSatellitesInUseUpdated: {
+            satInUse = satellites
+        }
+    }
 
 }

@@ -5,6 +5,13 @@ Item {
 
     property bool showDiagnostics: false
 
+    property alias gpsActive: rviNotifications.gpsActive
+    property alias rviConnected: rviNotifications.rviConnected
+    property alias rviInitialized: rviNotifications.rviInitialized
+    property alias gpsError: rviNotifications.gpsError
+    property alias satInUse: rviNotifications.satInUse
+    property alias satInView: rviNotifications.satInView
+
     Item {
         id: diagnoticsPageArea
         width: parent.width
@@ -42,7 +49,8 @@ Item {
                 font.pixelSize: parent.height * .2
                 wrapMode: Text.WordWrap
                 color: "black"
-                text: RviNotificationLayer.rviInitialized ? "RVI initialized" : RviNotificationLayer.rviConnected ? "RVI connected" : "RVI failed to initialize"
+
+                text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI failed to initialize"
             }
         }
 
@@ -67,12 +75,34 @@ Item {
                 font.pixelSize: parent.height * .2
                 wrapMode: Text.WordWrap
                 color: "black"
-                text: "GPS status: " + RviNotificationLayer.gpsError
+                text: "GPS status: " + diagnosticsPageInterface.psError
             }
         }
 
         // Satellite info
+        Rectangle {
+            id: satelliteInfoArea
+            width: parent.width
+            height: parent.height * .3
+            opacity: 0
+            anchors.horizontalCenter : parent.horizontalCenter
+            anchors.top : gpsMessageArea.bottom
 
+            Text {
+                id: satelliteInfo
+                width: parent.width
+                height: parent.height * .5
+                anchors.top: parent.top
+                anchors.topMargin: parent.height * .025
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                font.family: "Eurostyle"
+                font.pixelSize: parent.height * .2
+                wrapMode: Text.WordWrap
+                color: "black"
+                text: "Satellites in view: " + diagnosticsPageInterface.satInView + "  Satellites in use: " + diagnosticsPageInterface.satInUse
+            }
+        }
 
         /*
         Text {
@@ -84,5 +114,9 @@ Item {
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         } */
+    }
+
+    RviNotificationLayer {
+        id: rviNotifications
     }
 }
