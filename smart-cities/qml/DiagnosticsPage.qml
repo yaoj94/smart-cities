@@ -22,25 +22,53 @@ Item {
         }
 
         // RVI info
-        Text {
-            x: 89
-            y: 76
-            font.pixelSize: parent.height * 0.05
-            font.family: "Eurostyle"
-            // displays whether or not the RVI was initialized or connected
-            text: RviNotificationLayer.rviInitialized ? "RVI initialized" : RviNotificationLayer.rviConnected ? "RVI connected" : "RVI failed to initialize"
-            color: "black"
+        Rectangle {
+            id: rviMessageArea
+            width: parent.width
+            height: parent.height * .3
+            anchors.horizontalCenter : parent.horizontalCenter
+            anchors.top : parent.top
 
+            Text {
+                id: rviMessage
+                width: parent.width
+                height: parent.height * .5
+                anchors.top: parent.top
+                anchors.topMargin: parent.height * .0125
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                lineHeight: .75
+                font.family: "Helvetica"
+                font.pixelSize: parent.height * .2
+                wrapMode: Text.WordWrap
+                color: "black"
+                text: RviNotificationLayer.rviInitialized ? "RVI initialized" : RviNotificationLayer.rviConnected ? "RVI connected" : "RVI failed to initialize"
+            }
         }
 
         // GPS info
-        Text {
-            x: 89
-            y: 170
-            font.pixelSize: parent.height * 0.05
-            font.family: "Eurostyle"
-            text: "GPS status: " + RviNotificationLayer.gpsError
-            color: "black"
+        Rectangle {
+            id: gpsMessageArea
+            width: parent.width
+            height: parent.height * .3
+            anchors.horizontalCenter : parent.horizontalCenter
+            anchors.top : rviMessageArea.bottom
+
+            Text {
+                id: gpsMessage
+                width: parent.width
+                height: parent.height * .5
+                anchors.top: parent.top
+                anchors.topMargin: parent.height * .0125
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                lineHeight: .75
+                font.family: "Helvetica"
+                font.pixelSize: parent.height * .2
+                wrapMode: Text.WordWrap
+                color: "black"
+                text: "GPS status: " + RviNotificationLayer.gpsError
+            }
         }
 
         // Satellite info
