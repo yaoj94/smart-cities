@@ -49,8 +49,8 @@ Item {
                 font.pixelSize: parent.height * .2
                 wrapMode: Text.WordWrap
                 color: "black"
-
-                text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI failed to initialize"
+                text: "test"
+                //text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI failed to initialize"
             }
         }
 
@@ -75,7 +75,7 @@ Item {
                 font.pixelSize: parent.height * .2
                 wrapMode: Text.WordWrap
                 color: "black"
-                text: "GPS status: " + diagnosticsPageInterface.psError
+                text: "GPS status: " + diagnosticsPageInterface.gpsError
             }
         }
 
