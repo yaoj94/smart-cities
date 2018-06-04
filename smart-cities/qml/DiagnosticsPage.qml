@@ -28,6 +28,10 @@ Item {
             color: "darkgrey"
         }
 
+        RviNotificationLayer {
+            id: rviNotifications
+        }
+
         // RVI info
         Rectangle {
             id: rviMessageArea
@@ -39,8 +43,9 @@ Item {
 
             Text {
                 id: rviMessage
-                width: parent.width
-                height: parent.height * .5
+                visible: true
+                //width: parent.width
+                //height: parent.height * .5
                 anchors.top: parent.top
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -116,7 +121,4 @@ Item {
         } */
     }
 
-    RviNotificationLayer {
-        id: rviNotifications
-    }
 }
