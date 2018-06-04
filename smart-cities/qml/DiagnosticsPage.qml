@@ -20,6 +20,28 @@ Item {
 
             color: "darkgrey"
         }
+
+        // RVI info
+        Text {
+            x: 89
+            y: 76
+            // displays whether or not the RVI was initialized or connected
+            text: RviNotificationLayer.rviInitialized ? "RVI initialized" : RviNotificationLayer.rviConnected ? "RVI connected" : "RVI failed to initialize"
+            color: "black"
+
+        }
+
+        // GPS info
+        Text {
+            x: 89
+            y: 170
+            text: "GPS status: " + RviNotificationLayer.gpsError
+            color: "black"
+        }
+
+        // Satellite info
+
+
         /*
         Text {
             text: "Diagnostics"

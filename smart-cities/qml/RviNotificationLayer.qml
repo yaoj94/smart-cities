@@ -15,6 +15,8 @@ Item {
     property bool rviInitialized: false
     property bool gpsActive: false
 
+    property string gpsError: "uninitialized"
+
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
 
@@ -119,6 +121,25 @@ Item {
         }
     }
 
+    /*
+    Rectangle {
+        Text {
+            text: v2xsource.AccessError ? "access error" : ""
+        }
+        Text {
+            text: v2xsource.ClosedError ? "closed error" : ""
+        }
+        Text {
+            text: v2xsource.SocketError ? "socket error" : ""
+        }
+        Text {
+            text: v2xsource.UnknownSourceError ? "unknown source error" : ""
+        }
+        Text {
+            text: v2xsource.NoError ? "no errors" : ""
+        }
+    }*/
+
     PositionSource {
         id: v2xsource
         active: true
@@ -178,5 +199,12 @@ Item {
         onUpdateTimeout: {
             gpsActive = false
         }
+        onSourceErrorChanged: {
+            // should change to no error when initialized and no errors were found
+            gpsError = sourceError
+        }
+
     }
+
+
 }

@@ -5,7 +5,7 @@ Item {
     id: speedArea
 
     property bool speedAlertIsDisplayed: false
-    property string speedLimit: "30"
+    property string speedLimit: "--"
 
     Rectangle {
         id: speedBorder
