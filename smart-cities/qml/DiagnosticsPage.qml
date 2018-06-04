@@ -26,6 +26,7 @@ Item {
             id: rviMessageArea
             width: parent.width
             height: parent.height * .3
+            opacity: 0
             anchors.horizontalCenter : parent.horizontalCenter
             anchors.top : parent.top
 
@@ -34,11 +35,10 @@ Item {
                 width: parent.width
                 height: parent.height * .5
                 anchors.top: parent.top
-                anchors.topMargin: parent.height * .0125
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                lineHeight: .75
-                font.family: "Helvetica"
+                anchors.topMargin: parent.height * .025
+                font.family: "Eurostyle"
                 font.pixelSize: parent.height * .2
                 wrapMode: Text.WordWrap
                 color: "black"
@@ -51,6 +51,7 @@ Item {
             id: gpsMessageArea
             width: parent.width
             height: parent.height * .3
+            opacity: 0
             anchors.horizontalCenter : parent.horizontalCenter
             anchors.top : rviMessageArea.bottom
 
@@ -59,11 +60,10 @@ Item {
                 width: parent.width
                 height: parent.height * .5
                 anchors.top: parent.top
-                anchors.topMargin: parent.height * .0125
+                anchors.topMargin: parent.height * .025
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
-                lineHeight: .75
-                font.family: "Helvetica"
+                font.family: "Eurostyle"
                 font.pixelSize: parent.height * .2
                 wrapMode: Text.WordWrap
                 color: "black"
