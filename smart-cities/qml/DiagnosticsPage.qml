@@ -25,6 +25,8 @@ Item {
         Text {
             x: 89
             y: 76
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
             // displays whether or not the RVI was initialized or connected
             text: RviNotificationLayer.rviInitialized ? "RVI initialized" : RviNotificationLayer.rviConnected ? "RVI connected" : "RVI failed to initialize"
             color: "black"
@@ -35,6 +37,8 @@ Item {
         Text {
             x: 89
             y: 170
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
             text: "GPS status: " + RviNotificationLayer.gpsError
             color: "black"
         }
