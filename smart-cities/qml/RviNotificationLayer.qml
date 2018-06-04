@@ -18,6 +18,9 @@ Item {
     property int satInUse: 0
     property int satInView: 0
 
+    property real latitude: 0
+    property real longitude: 0
+
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
 
@@ -159,12 +162,14 @@ Item {
             var latitudeData = {}
             latitudeData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Latitude"
             latitudeData["value"] = position.coordinate.latitude
+            rviRoot.latitude = position.coordinate.latitude
             latitudeData["time"] = position.timestamp
             gpsData.push(latitudeData)
 
             var longitudeData = {}
             longitudeData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Longitude"
             longitudeData["value"] = position.coordinate.longitude
+            rviRoot.longitude = position.coordinate.longitude
             longitudeData["time"] = position.timestamp
             gpsData.push(longitudeData)
 

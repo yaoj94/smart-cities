@@ -11,6 +11,8 @@ Item {
     property alias gpsError: rviNotifications.gpsError
     property alias satInUse: rviNotifications.satInUse
     property alias satInView: rviNotifications.satInView
+    property alias longitude: rviNotifications.longitude
+    property alias latitute: rviNotifications.latitude
 
     Item {
         id: diagnoticsPageArea
@@ -111,8 +113,8 @@ Item {
 
 
         Text {
-            id: rviMessage
-            text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI failed to initialize"
+            id: rviInitializedMessage
+            text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : "RVI failed to initialize"
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
@@ -120,14 +122,35 @@ Item {
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         }
-
         Text {
-            id: gpsMessage
-            text: "GPS status: " + diagnosticsPageInterface.gpsError
+            id: rviConnectedMessage
+            text: diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI not connected"
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: rviMessage.bottom
+            anchors.top: rviInitializedMessage.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            id: gpsMessage
+            text: "GPS status: " + !diagnosticsPageInterface.gpsActive ? "inactive" : diagnosticsPageInterface.gpsError
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: rviConnectedMessage.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            id: coordinatesData
+            text: "Longitude: " + diagnosticsPageInterface.longitude + "  Latitude: " + diagnosticsPageInterface.latitute
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: gpsMessage.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         }
