@@ -1,3 +1,5 @@
+QT += positioning
+
 TEMPLATE = subdirs
 
 CONFIG += desktop
