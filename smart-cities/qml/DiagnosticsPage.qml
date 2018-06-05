@@ -13,7 +13,7 @@ Item {
     property alias satInView: rviNotifications.satInView
     property alias longitude: rviNotifications.longitude
     property alias latitute: rviNotifications.latitude
-    property alias timestamp: rviNotifications.timestamp
+    property alias gpsTimestamp: rviNotifications.gpsTimestamp
 
     Item {
         id: diagnoticsPageArea
@@ -157,8 +157,8 @@ Item {
         }
 
         Text {
-            id: gpsTimestamp
-            text: diagnosticsPageInterface.timestamp
+            id: timestamp
+            text: diagnosticsPageInterface.gpsTimestamp
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"

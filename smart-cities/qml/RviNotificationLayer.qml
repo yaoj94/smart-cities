@@ -20,7 +20,7 @@ Item {
 
     property real latitude: 0
     property real longitude: 0
-    property date timestamp: ""
+    property date gpsTimestamp: "0000-00-00"
 
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
@@ -152,7 +152,7 @@ Item {
         onPositionChanged: {
             gpsActive = true
 
-            timestamp = position.timestamp
+            gpsTimestamp = position.timestamp
 
             var gpsData = []
 
