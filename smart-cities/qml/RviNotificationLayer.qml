@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import QtPositioning 5.3
+import QtQml 2.0
 
 import com.genivi.rvitrafficservice 1.0
 
@@ -20,7 +21,7 @@ Item {
 
     property real latitude: 0
     property real longitude: 0
-    property date gpsTimestamp: "0000-00-00"
+    property string gpsTimestamp: ""
 
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
@@ -153,7 +154,6 @@ Item {
             gpsActive = true
 
             gpsTimestamp = position.timestamp
-
             var gpsData = []
 
             var altitudeData = {}
