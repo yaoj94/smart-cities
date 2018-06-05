@@ -20,6 +20,7 @@ Item {
 
     property real latitude: 0
     property real longitude: 0
+    property date timestamp: ""
 
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
@@ -150,6 +151,8 @@ Item {
         updateInterval: 1000
         onPositionChanged: {
             gpsActive = true
+
+            timestamp = position.timestamp
 
             var gpsData = []
 

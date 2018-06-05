@@ -13,6 +13,7 @@ Item {
     property alias satInView: rviNotifications.satInView
     property alias longitude: rviNotifications.longitude
     property alias latitute: rviNotifications.latitude
+    property alias timestamp: rviNotifications.timestamp
 
     Item {
         id: diagnoticsPageArea
@@ -151,6 +152,17 @@ Item {
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
             anchors.top: gpsMessage.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
+
+        Text {
+            id: gpsTimestamp
+            text: diagnosticsPageInterface.timestamp
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: coordinatesData.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         }
