@@ -13,7 +13,8 @@ Item {
     QtObject {
         id: privates
 
-        property date date: new Date()
+        property date date: new Date() - 252300000000
+        //date.setSeconds: date.getUTCSeconds() - 28800
         property string time: ""
         property string dateString: ""
         readonly property string timeFormat: show12HourClock ? "h:mm AP" : "hh:mm"
@@ -26,7 +27,7 @@ Item {
         repeat: true
         triggeredOnStart: true
         onTriggered: {
-            privates.date = new Date().getUTCSeconds() - 28800
+            privates.date = new Date() - 252300000000
             //privates.date.setOffsetFromUtc(-8)
             privates.time = privates.date.toLocaleTimeString(Qt.locale(), privates.timeFormat)
             privates.dateString = privates.date.toLocaleDateString(Qt.locale(), privates.dateFormat)
