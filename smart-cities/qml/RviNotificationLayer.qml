@@ -9,7 +9,7 @@ Item {
     id: rviRoot
 
     property string addr: "205.153.115.116"
-    property string port: "9000"
+    property string port: "2947" //9000
     property string backendDeviceId: "genivi.org/backend/"
     property string remoteServiceName: "obu_data_rcv"
     property bool rviConnected: false
@@ -170,7 +170,7 @@ Item {
         onPositionChanged: {
             gpsActive = true
 
-            gpsTimestamp = position.timestamp.setSystemTimeZone(UTC-8)
+            gpsTimestamp = position.timestamp
             var gpsData = []
 
             var altitudeData = {}

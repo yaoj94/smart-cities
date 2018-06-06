@@ -14,7 +14,7 @@ Item {
     QtObject {
         id: privates
 
-        property date date: new Date()
+        property date date: new Date(Date.now + ' GMT-8:00')
         property string time: ""
         property string dateString: ""
         readonly property string timeFormat: show12HourClock ? "h:mm AP" : "hh:mm"
@@ -27,8 +27,7 @@ Item {
         repeat: true
         triggeredOnStart: true
         onTriggered: {
-            privates.date = new Date();
-            privates.date.setSystemTimeZone(UTC-8)
+            privates.date = new Date(Date.now + ' GMT-8:00');
             privates.time = privates.date.toLocaleTimeString(Qt.locale(), privates.timeFormat)
             privates.dateString = privates.date.toLocaleDateString(Qt.locale(), privates.dateFormat)
         }
