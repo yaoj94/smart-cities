@@ -26,8 +26,8 @@ Item {
         repeat: true
         triggeredOnStart: true
         onTriggered: {
-            privates.date = new Date();
-            privates.date.timeZoneUpdated()
+            privates.date = new Date().getUTCSeconds() - 28800
+            //privates.date.setOffsetFromUtc(-8)
             privates.time = privates.date.toLocaleTimeString(Qt.locale(), privates.timeFormat)
             privates.dateString = privates.date.toLocaleDateString(Qt.locale(), privates.dateFormat)
         }
