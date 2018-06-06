@@ -10,11 +10,10 @@ Item {
     /* Default to 24 hour time display */
     property bool show12HourClock: false
 
-
     QtObject {
         id: privates
 
-        property date date: new Date(Date.now + ' GMT-8:00')
+        property date date: new Date()
         property string time: ""
         property string dateString: ""
         readonly property string timeFormat: show12HourClock ? "h:mm AP" : "hh:mm"
@@ -27,10 +26,12 @@ Item {
         repeat: true
         triggeredOnStart: true
         onTriggered: {
-            privates.date = new Date(Date.now + ' GMT-8:00');
+            privates.date = new Date();
+            privates.date.timeZoneUpdated()
             privates.time = privates.date.toLocaleTimeString(Qt.locale(), privates.timeFormat)
             privates.dateString = privates.date.toLocaleDateString(Qt.locale(), privates.dateFormat)
         }
     }
+
 
 }
