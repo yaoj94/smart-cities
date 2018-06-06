@@ -170,6 +170,9 @@ Item {
         onPositionChanged: {
             gpsActive = true
 
+            var timezone = -position.timestamp.getTimezoneOffset()/60
+            position.timestamp.setHours(position.timestamp.getHours() + timezone)
+
             gpsTimestamp = position.timestamp
             var gpsData = []
 
