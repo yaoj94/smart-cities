@@ -3,6 +3,7 @@ import QtPositioning 5.3
 import QtQml 2.0
 
 import com.genivi.rvitrafficservice 1.0
+//import com.genivi.v2x 1.0
 
 Item {
     id: rviRoot
@@ -15,12 +16,15 @@ Item {
     property bool rviInitialized: false
     property bool gpsActive: false
 
-    property string gpsError: "inactive"
-    property int satInUse: 0
-    property int satInView: 0
+    property int rviNodeId
+    property string rviConnectionError
 
-    property real latitude: 0
-    property real longitude: 0
+    property string gpsError: "none"
+    property int satInUse
+    property int satInView
+
+    property real latitude
+    property real longitude
     property string gpsTimestamp: ""
 
     signal trafficEvent(string title, string explanation, url icon)
@@ -36,6 +40,7 @@ Item {
         onTriggered: {
             console.log("Attempting to connect to " + addr + ":" + port)
             RviNode.nodeConnect(addr, port)
+            rviNodeId = RviNode.findAssociatedConnectionId(addr, port)
         }
     }
 
@@ -44,15 +49,26 @@ Item {
 
         // Errors
         onInitError: console.log("Error: Failed to initialize RVI")
-        onInvalidRviHandle: console.log("Error: Invalid RVI handle")
-        onRegisterServiceError: console.log("Error: RVI node failed to register service")
-        onProcessInputError: console.log("Error: Process input failure")
+        onInvalidRviHandle: {
+            rviConnectionError = "Invalid RVI handle"
+            console.log("Error: Invalid RVI handle")
+        }
+        onRegisterServiceError: {
+            rviConnectionError = "Failed to register service"
+            console.log("Error: RVI node failed to register service")
+        }
+        onProcessInputError: {
+            rviConnectionError = "Process input failure"
+            console.log("Error: Process input failure")
+        }
         onRemoteConnectionError: {
+            rviConnectionError = "Failed to connect to remote node"
             console.log("Error: Failed to connect to remote node.")
             console.log("Starting the connection timer...")
             connectTimer.restart()
         }
         onInvokeServiceError: {
+            rviConnectionError = "Failed to invoke service"
         }
 
         // Successes
@@ -70,6 +86,7 @@ Item {
             console.log("Success! Connected to remote node")
         }
         onNewActiveConnection: {
+            rviConnectionError = "No errors"
             rviConnected = true
             console.log("RVI Node has new active connections")
         }
@@ -153,7 +170,7 @@ Item {
         onPositionChanged: {
             gpsActive = true
 
-            gpsTimestamp = position.timestamp
+            gpsTimestamp = position.timestamp.setSystemTimeZone(UTC-8)
             var gpsData = []
 
             var altitudeData = {}
@@ -207,9 +224,10 @@ Item {
         }
         onUpdateTimeout: {
             gpsActive = false
+            rviRoot.longitude = 0
+            rviRoot.latitude = 0
         }
         onSourceErrorChanged: {
-            // should change to no error when initialized and no errors were found
             gpsError = sourceError
         }
 

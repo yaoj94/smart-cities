@@ -28,6 +28,7 @@ Item {
         triggeredOnStart: true
         onTriggered: {
             privates.date = new Date();
+            privates.date.setSystemTimeZone(UTC-8)
             privates.time = privates.date.toLocaleTimeString(Qt.locale(), privates.timeFormat)
             privates.dateString = privates.date.toLocaleDateString(Qt.locale(), privates.dateFormat)
         }

@@ -5,7 +5,7 @@ Item {
 
     property bool showDiagnostics: false
 
-    property alias gpsActive: rviNotifications.gpsActive
+    property string gpsActive: rviNotifications.gpsActive ? "active" : "inactive"
     property alias rviConnected: rviNotifications.rviConnected
     property alias rviInitialized: rviNotifications.rviInitialized
     property alias gpsError: rviNotifications.gpsError
@@ -14,6 +14,8 @@ Item {
     property alias longitude: rviNotifications.longitude
     property alias latitute: rviNotifications.latitude
     property alias gpsTimestamp: rviNotifications.gpsTimestamp
+    property alias rviNodeId: rviNotifications.rviNodeId
+    property alias rviConnectionError: rviNotifications.rviConnectionError
 
     Item {
         id: diagnoticsPageArea
@@ -34,59 +36,8 @@ Item {
         RviNotificationLayer {
             id: rviNotifications
         }
+
 /*
-        // RVI info
-        Rectangle {
-            id: rviMessageArea
-            width: parent.width
-            height: parent.height * .3
-            opacity: 0
-            anchors.horizontalCenter : parent.horizontalCenter
-            anchors.top : parent.top
-
-            Text {
-                id: rviMessage
-                visible: true
-                //width: parent.width
-                //height: parent.height * .5
-                anchors.top: parent.top
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                anchors.topMargin: parent.height * .025
-                font.family: "Eurostyle"
-                font.pixelSize: parent.height * .2
-                wrapMode: Text.WordWrap
-                color: "black"
-                text: "test"
-                //text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI failed to initialize"
-            }
-        }
-
-        // GPS info
-        Rectangle {
-            id: gpsMessageArea
-            width: parent.width
-            height: parent.height * .3
-            opacity: 0
-            anchors.horizontalCenter : parent.horizontalCenter
-            anchors.top : rviMessageArea.bottom
-
-            Text {
-                id: gpsMessage
-                width: parent.width
-                height: parent.height * .5
-                anchors.top: parent.top
-                anchors.topMargin: parent.height * .025
-                horizontalAlignment: Text.AlignHCenter
-                verticalAlignment: Text.AlignVCenter
-                font.family: "Eurostyle"
-                font.pixelSize: parent.height * .2
-                wrapMode: Text.WordWrap
-                color: "black"
-                text: "GPS status: " + diagnosticsPageInterface.gpsError
-            }
-        }
-
         // Satellite info
         Rectangle {
             id: satelliteInfoArea
@@ -112,7 +63,7 @@ Item {
             }
         }*/
 
-
+/*
         Text {
             id: rviInitializedMessage
             text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : "RVI failed to initialize"
@@ -121,7 +72,7 @@ Item {
             font.family: "Eurostyle"
             anchors.top: parent.top
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
         }
         Text {
             id: rviConnectedMessage
@@ -131,40 +82,93 @@ Item {
             font.family: "Eurostyle"
             anchors.top: rviInitializedMessage.bottom
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
-
+            anchors.left: parent.left
+        }*/
         Text {
-            id: gpsMessage
-            text: "GPS status: " + diagnosticsPageInterface.gpsError
+            id: rviConnection
+            text: diagnosticsPageInterface.rviConnected ? "RVI connected" : diagnosticsPageInterface.rviInitialized ? "RVI initialized" : "RVI failed to initialize"
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: rviConnectedMessage.bottom
+            anchors.top: parent.top
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
         }
 
         Text {
-            id: coordinatesData
-            text: "Longitude: " + diagnosticsPageInterface.longitude + "  Latitude: " + diagnosticsPageInterface.latitute
+            id: rviNodeMessage
+            text: "RVI Node ID: " + diagnosticsPageInterface.rviNodeId
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: gpsMessage.bottom
+            anchors.top: rviConnection.bottom
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
+        }
+        Text {
+            id: rviErrors
+            text: "RVI error: " + diagnosticsPageInterface.rviConnectionError
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: rviNodeMessage.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: gpsStatus
+            text: "GPS status: " + diagnosticsPageInterface.gpsActive
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: rviErrors.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: gpsErrors
+            text: "GPS errors: " + diagnosticsPageInterface.gpsError
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: gpsStatus.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: latitudeData
+            text: "Latitude: " + diagnosticsPageInterface.latitute
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: gpsErrors.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: longitudeData
+            text: "Longitude: " + diagnosticsPageInterface.longitude
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: latitudeData.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
         }
 
         Text {
             id: timestamp
-            text: diagnosticsPageInterface.gpsTimestamp
+            text: "GPS Timestamp: " + diagnosticsPageInterface.gpsTimestamp
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: coordinatesData.bottom
+            anchors.top: longitudeData.bottom
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
         }
     }
 
