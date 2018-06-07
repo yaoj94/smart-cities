@@ -167,29 +167,29 @@ Item {
 
             var latitudeData = {}
             latitudeData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Latitude"
-            latitudeData["value"] = position.coordinate.latitude
             rviRoot.latitude = position.coordinate.latitude
+            latitudeData["value"] = rviRoot.latitude
             latitudeData["time"] = position.timestamp
             gpsData.push(latitudeData)
 
             var longitudeData = {}
             longitudeData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Longitude"
-            longitudeData["value"] = position.coordinate.longitude
             rviRoot.longitude = position.coordinate.longitude
+            longitudeData["value"] = rviRoot.longitude
             longitudeData["time"] = position.timestamp
             gpsData.push(longitudeData)
 
             var speedData = {}
             speedData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Speed"
-            speedData["value"] = position.speed
             rviRoot.speed = position.speed
+            speedData["value"] = rviRoot.speed
             speedData["time"] = position.timestamp
             gpsData.push(speedData)
 
             var headingData = {}
             headingData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Heading"
-            headingData["value"] = position.direction
             rviRoot.direction = position.direction
+            headingData["value"] = rviRoot.direction
             headingData["time"] = position.timestamp
             gpsData.push(headingData)
 
@@ -212,6 +212,8 @@ Item {
         }
         onUpdateTimeout: {
             gpsActive = false
+            rviRoot.longitude = 0
+            rviRoot.latitude = 0
         }
         onSourceErrorChanged: {
             // should change to no error when initialized and no errors were found
