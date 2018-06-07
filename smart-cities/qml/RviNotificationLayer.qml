@@ -23,6 +23,9 @@ Item {
     property real longitude: 0
     property string gpsTimestamp: ""
 
+    property double speed: 0
+    property double direction: 0
+
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
 
@@ -179,12 +182,14 @@ Item {
             var speedData = {}
             speedData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Speed"
             speedData["value"] = position.speed
+            rviRoot.speed = position.speed
             speedData["time"] = position.timestamp
             gpsData.push(speedData)
 
             var headingData = {}
             headingData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Heading"
             headingData["value"] = position.direction
+            rviRoot.direction = position.direction
             headingData["time"] = position.timestamp
             gpsData.push(headingData)
 

@@ -14,6 +14,8 @@ Item {
     property alias longitude: rviNotifications.longitude
     property alias latitute: rviNotifications.latitude
     property alias gpsTimestamp: rviNotifications.gpsTimestamp
+    property alias speed: rviNotifications.speed
+    property alias direction: rviNotifications.direction
 
     Item {
         id: diagnoticsPageArea
@@ -114,8 +116,8 @@ Item {
 
 
         Text {
-            id: rviInitializedMessage
-            text: diagnosticsPageInterface.rviInitialized ? "RVI initialized" : "RVI failed to initialize"
+            id: rviStatus
+            text: diagnosticsPageInterface.rviConnected ? "RVI connected" : diagnosticsPageInterface.rviInitialized ? "RVI initialized" : "RVI failed to initialize"
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
@@ -123,46 +125,69 @@ Item {
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         }
-        Text {
-            id: rviConnectedMessage
-            text: diagnosticsPageInterface.rviConnected ? "RVI connected" : "RVI not connected"
-            color: "black"
-            font.pixelSize: parent.height * 0.05
-            font.family: "Eurostyle"
-            anchors.top: rviInitializedMessage.bottom
-            anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
 
         Text {
             id: gpsMessage
-            text: "GPS status: " + diagnosticsPageInterface.gpsError
+            text: "GPS status: " + diagnosticsPageInterface.gpsActive
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: rviConnectedMessage.bottom
+            anchors.top: rviStatus.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
         Text {
-            id: coordinatesData
-            text: "Longitude: " + diagnosticsPageInterface.longitude + "  Latitude: " + diagnosticsPageInterface.latitute
+            id: latitudeData
+            text: "Latitude: " + diagnosticsPageInterface.latitute
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
             anchors.top: gpsMessage.bottom
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: longitudeData
+            text: "Longitude: " + diagnosticsPageInterface.longitude
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: latitudeData.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: gpsSpeed
+            text: "Speed: " + diagnosticsPageInterface.speed
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: longitudeData.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: gpsDirection
+            text: "Heading: " + diagnosticsPageInterface.direction
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: gpsSpeed.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
         }
 
         Text {
             id: timestamp
-            text: diagnosticsPageInterface.gpsTimestamp
+            text: "Timestamp: " + diagnosticsPageInterface.gpsTimestamp
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: coordinatesData.bottom
+            anchors.top: gpsDirection.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.horizontalCenter: parent.horizontalCenter
         }
