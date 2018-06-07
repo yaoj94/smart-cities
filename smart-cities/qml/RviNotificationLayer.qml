@@ -156,7 +156,8 @@ Item {
         onPositionChanged: {
             gpsActive = true
 
-            gpsTimestamp = position.timestamp
+            gpsTimestamp = new Date(position.timestamp.getTime() - (3600000*7))
+
             var gpsData = []
 
             var altitudeData = {}

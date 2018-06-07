@@ -27,7 +27,8 @@ Item {
         repeat: true
         triggeredOnStart: true
         onTriggered: {
-            privates.date = new Date();
+            var d = new Date()
+            privates.date = new Date(d.getTime() - (3600000*7))
             privates.time = privates.date.toLocaleTimeString(Qt.locale(), privates.timeFormat)
             privates.dateString = privates.date.toLocaleDateString(Qt.locale(), privates.dateFormat)
         }
