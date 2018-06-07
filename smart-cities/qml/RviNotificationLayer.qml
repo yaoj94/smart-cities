@@ -214,6 +214,8 @@ Item {
             gpsActive = false
             rviRoot.longitude = 0
             rviRoot.latitude = 0
+            rviRoot.speed = 0
+            rviRoot.heading = 0
         }
         onSourceErrorChanged: {
             // should change to no error when initialized and no errors were found
