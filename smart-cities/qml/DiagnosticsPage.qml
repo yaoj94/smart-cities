@@ -16,6 +16,8 @@ Item {
     property alias gpsTimestamp: rviNotifications.gpsTimestamp
     property alias rviNodeId: rviNotifications.rviNodeId
     property alias rviConnectionError: rviNotifications.rviConnectionError
+    property alias speed: rviNotifications.speed
+    property alias direction: rviNotifications.direction
 
     Item {
         id: diagnoticsPageArea
@@ -161,12 +163,34 @@ Item {
         }
 
         Text {
-            id: timestamp
-            text: "GPS Timestamp: " + diagnosticsPageInterface.gpsTimestamp
+            id: gpsSpeed
+            text: "Speed: " + diagnosticsPageInterface.speed
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
             anchors.top: longitudeData.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: gpsDirection
+            text: "Heading: " + diagnosticsPageInterface.direction
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: gpsSpeed.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: timestamp
+            text: "Timestamp: " + diagnosticsPageInterface.gpsTimestamp
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: gpsDirection.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
         }

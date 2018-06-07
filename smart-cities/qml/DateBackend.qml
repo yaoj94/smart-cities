@@ -28,9 +28,9 @@ Item {
         triggeredOnStart: true
         onTriggered: {
             privates.date = new Date()
-            //var timezone = -privates.date.getTimezoneOffset()/60
-            //privates.date = privates.date.setHours(privates.date.getHours() - 7)
-            privates.date.setOffsetFromUtc(-8)
+            var timezone = (privates.date.getTimezoneOffset()/60) - 7
+            privates.date = privates.date.setHours(privates.date.getHours() + timezone)
+
             privates.time = privates.date.toLocaleTimeString(Qt.locale(), privates.timeFormat)
             privates.dateString = privates.date.toLocaleDateString(Qt.locale(), privates.dateFormat)
         }
