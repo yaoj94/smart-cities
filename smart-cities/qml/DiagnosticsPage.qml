@@ -5,7 +5,7 @@ Item {
 
     property bool showDiagnostics: false
 
-    property alias gpsActive: rviNotifications.gpsActive
+    property string gpsActive: rviNotifications.gpsActive ? "active" : "inactive"
     property alias rviConnected: rviNotifications.rviConnected
     property alias rviInitialized: rviNotifications.rviInitialized
     property alias gpsError: rviNotifications.gpsError
@@ -123,7 +123,7 @@ Item {
             font.family: "Eurostyle"
             anchors.top: parent.top
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
         }
 
         Text {
@@ -134,7 +134,7 @@ Item {
             font.family: "Eurostyle"
             anchors.top: rviStatus.bottom
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
         }
 
         Text {
@@ -189,7 +189,7 @@ Item {
             font.family: "Eurostyle"
             anchors.top: gpsDirection.bottom
             anchors.topMargin: parent.height * 0.025
-            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.left: parent.left
         }
     }
 
