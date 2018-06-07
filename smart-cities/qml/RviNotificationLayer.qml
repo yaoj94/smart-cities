@@ -173,10 +173,8 @@ Item {
         onPositionChanged: {
             gpsActive = true
 
-            //var timezone = -position.timestamp.getTimezoneOffset()/60
-            position.timestamp.setHours(position.timestamp.getHours() - 7)
+            gpsTimestamp = new Date(position.timestamp.getTime() - (3600000*7))
 
-            gpsTimestamp = position.timestamp
             var gpsData = []
 
             var altitudeData = {}
