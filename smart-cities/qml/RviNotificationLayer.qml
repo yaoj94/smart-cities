@@ -14,6 +14,7 @@ Item {
     property bool rviConnected: false
     property bool rviInitialized: false
     property bool gpsActive: false
+    property bool gpsUpdateTimeout: false
 
     property string gpsError: "inactive"
     property int satInUse: 0
@@ -196,12 +197,12 @@ Item {
 
             console.log("SERVICE NAME: " + serviceName + " PARAMS: " + paramsString)
 
-            if(rviConnected) {
-                RviNode.invokeService(serviceName, paramsString)
-            }
+            RviNode.invokeService(serviceName, paramsString)
+
         }
         onUpdateTimeout: {
             gpsActive = false
+            gpsUpdateTimeout = true
             gpsParams = ""
         }
         onSourceErrorChanged: {

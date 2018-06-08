@@ -18,7 +18,7 @@ Item {
     property alias direction: rviNotifications.direction
     property alias rviServiceName: rviNotifications.rviServiceName
     property alias gpsParams: rviNotifications.gpsParams
-    property alias updateTimeout: rviNotifications.updateTimeout
+    property alias gpsUpdateTimeout: rviNotifications.gpsUpdateTimeout
 
 
     Item {
@@ -76,7 +76,7 @@ Item {
 
         Text {
             id: gpsTimeout
-            text: "Update Timeout: " + diagnosticsPageInterface.updateTimeout
+            text: "Update Timeout: " + diagnosticsPageInterface.gpsUpdateTimeout
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
