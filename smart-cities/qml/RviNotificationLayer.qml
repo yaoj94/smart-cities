@@ -30,6 +30,9 @@ Item {
     property double speed: 0
     property double direction: 0
 
+    property string rviServiceName: ""
+    property string gpsParam: ""
+
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
 
@@ -51,7 +54,10 @@ Item {
         target: RviNode
 
         // Errors
-        onInitError: console.log("Error: Failed to initialize RVI")
+        onInitError: {
+            rviConnectionError = "Failed to initialize"
+            console.log("Error: Failed to initialize RVI")
+        }
         onInvalidRviHandle: {
             rviConnectionError = "Invalid RVI handle"
             console.log("Error: Invalid RVI handle")
@@ -222,8 +228,10 @@ Item {
             params["vehicleId"] = rviId
 
             var paramsString = JSON.stringify(params)
+            gpsParam = paramsString
 
             var serviceName = backendDeviceId + remoteServiceName
+            rviServiceName = serviceName
 
             console.log("SERVICE NAME: " + serviceName + " PARAMS: " + paramsString)
             RviNode.invokeService(serviceName, paramsString)

@@ -18,6 +18,7 @@ Item {
     property alias rviConnectionError: rviNotifications.rviConnectionError
     property alias speed: rviNotifications.speed
     property alias direction: rviNotifications.direction
+    property alias rviServiceName: rviNotifications.rviServiceName
 
     Item {
         id: diagnoticsPageArea
@@ -117,6 +118,17 @@ Item {
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
         }
+/*
+        Text {
+            id: rviService
+            text: "Service Name: " + diagnosticsPageInterface.rviServiceName
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: rviErrors.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }*/
 
         Text {
             id: gpsStatus

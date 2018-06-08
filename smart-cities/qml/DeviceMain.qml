@@ -27,11 +27,11 @@ Window {
         id: homeObject
         anchors.fill: parent
 
-        transform: Rotation {
+        /*transform: Rotation {
             angle: 180
             origin.x: root.width/2
             origin.y: root.height/2
-        }
+        }*/
 
         // Wire up Home API to HMIController API
 //        appIsDisplayed: hmiController.appIsDisplayed
