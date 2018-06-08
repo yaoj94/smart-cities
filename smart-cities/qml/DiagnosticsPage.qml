@@ -75,7 +75,7 @@ Item {
         Text {
             id: gpsParamsMessage
             text: diagnosticsPageInterface.gpsParams
-            fontSizeMode: Text.Fit
+            fontSizeMode: Text.VerticalFit
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
