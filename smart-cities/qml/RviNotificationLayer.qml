@@ -26,6 +26,9 @@ Item {
     property double speed: 0
     property double direction: 0
 
+    property string rviServiceName: ""
+    property string gpsParams: ""
+
     signal trafficEvent(string title, string explanation, url icon)
     signal speedEvent(string speedLimit, bool speeding)
 
@@ -163,41 +166,41 @@ Item {
             var altitudeData = {}
             altitudeData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Altitude"
             altitudeData["value"] = position.coordinate.altitude
-            altitudeData["time"] = position.timestamp
+            altitudeData["time"] = gpsTimestamp
             gpsData.push(altitudeData)
 
             var latitudeData = {}
             latitudeData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Latitude"
-            rviRoot.latitude = position.coordinate.latitude
+            //rviRoot.latitude = position.coordinate.latitude
             latitudeData["value"] = rviRoot.latitude
-            latitudeData["time"] = position.timestamp
+            latitudeData["time"] = gpsTimestamp
             gpsData.push(latitudeData)
 
             var longitudeData = {}
             longitudeData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Longitude"
-            rviRoot.longitude = position.coordinate.longitude
+            //rviRoot.longitude = position.coordinate.longitude
             longitudeData["value"] = rviRoot.longitude
-            longitudeData["time"] = position.timestamp
+            longitudeData["time"] = gpsTimestamp
             gpsData.push(longitudeData)
 
             var speedData = {}
             speedData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Speed"
-            rviRoot.speed = position.speed
+            //rviRoot.speed = position.speed
             speedData["value"] = rviRoot.speed
-            speedData["time"] = position.timestamp
+            speedData["time"] = gpsTimestamp
             gpsData.push(speedData)
 
             var headingData = {}
             headingData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Heading"
-            rviRoot.direction = position.direction
+            //rviRoot.direction = position.direction
             headingData["value"] = rviRoot.direction
-            headingData["time"] = position.timestamp
+            headingData["time"] = gpsTimestamp
             gpsData.push(headingData)
 
             var accuracyData = {}
             accuracyData["source"] = "Signal.Cabin.Infotainment.Navigation.CurrentLocation.Accuracy"
             accuracyData["value"] = position.horizontalAccuracy
-            accuracyData["time"] = position.timestamp
+            accuracyData["time"] = gpsTimestamp
             gpsData.push(accuracyData)
 
             var params = {}
@@ -205,8 +208,10 @@ Item {
             params["vehicleId"] = rviId
 
             var paramsString = JSON.stringify(params)
+            gpsParams = paramsString
 
             var serviceName = backendDeviceId + remoteServiceName
+            rviServiceName = serviceName
 
             console.log("SERVICE NAME: " + serviceName + " PARAMS: " + paramsString)
             RviNode.invokeService(serviceName, paramsString)

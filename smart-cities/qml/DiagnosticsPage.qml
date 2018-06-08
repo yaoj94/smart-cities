@@ -16,6 +16,8 @@ Item {
     property alias gpsTimestamp: rviNotifications.gpsTimestamp
     property alias speed: rviNotifications.speed
     property alias direction: rviNotifications.direction
+    property alias rviServiceName: rviNotifications.rviServiceName
+    property alias gpsParams: rviNotifications.gpsParams
 
     Item {
         id: diagnoticsPageArea
@@ -49,17 +51,41 @@ Item {
         }
 
         Text {
-            id: gpsMessage
-            text: "GPS status: " + diagnosticsPageInterface.gpsActive
+            id: serviceName
+            text: "Service Name: " + diagnosticsPageInterface.rviServiceName
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: rviStatus.bottom
+            anchors.top: rviStatus.top
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
         }
 
         Text {
+            id: gpsMessage
+            text: "GPS status: " + diagnosticsPageInterface.gpsActive
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: serviceName.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
+            id: gpsParamsMessage
+            text: diagnosticsPageInterface.gpsParams
+            fontSizeMode: Text.Fit
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            wrapMode: Text.WordWrap
+            anchors.top: gpsMessage.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+       /* Text {
             id: latitudeData
             text: "Latitude: " + diagnosticsPageInterface.latitute
             color: "black"
@@ -112,7 +138,7 @@ Item {
             anchors.top: gpsDirection.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
-        }
+        } */
     }
 
 }
