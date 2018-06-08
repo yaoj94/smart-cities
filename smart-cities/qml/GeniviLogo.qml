@@ -56,6 +56,7 @@ Item {
     Text {
         id: timeDisplay
         text: dateObject.currentTimeString
+        font.pointSize: 20
         color: featureArea.gpsActive ? "white" : colors.alertTint // light red
         fontSizeMode: Text.HorizontalFit
         font.family: "Eurostyle"
@@ -67,6 +68,7 @@ Item {
     Text {
         id: weekdayDisplay
         text: dateObject.currentWeekdayString
+        font.pointSize: 20
         color: featureArea.rviConnected ? "white" : featureArea.rviInitialized ? colors.secondaryTint : colors.alertTint
         fontSizeMode: Text.HorizontalFit
         font.family: "Eurostyle"
@@ -78,6 +80,7 @@ Item {
     Text {
         id: monthDisplay
         text: dateObject.currentMonthString
+        font.pointSize: 20
         color: "white"
         fontSizeMode: Text.HorizontalFit
         font.family: "Eurostyle"
@@ -89,6 +92,7 @@ Item {
     Text {
         id: dayDisplay
         text: dateObject.currentDayString
+        font.pointSize: 20
         color: "white"
         fontSizeMode: Text.HorizontalFit
         font.family: "Eurostyle"
