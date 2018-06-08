@@ -80,7 +80,7 @@ Item {
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
             width: parent.width
-            wrapMode: Text.WordWrap
+            wrapMode: Text.Wrap
             anchors.top: gpsMessage.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
