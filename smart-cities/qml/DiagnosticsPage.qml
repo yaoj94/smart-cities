@@ -18,6 +18,8 @@ Item {
     property alias direction: rviNotifications.direction
     property alias rviServiceName: rviNotifications.rviServiceName
     property alias gpsParams: rviNotifications.gpsParams
+    property alias updateTimeout: rviNotifications.updateTimeout
+
 
     Item {
         id: diagnoticsPageArea
@@ -73,6 +75,17 @@ Item {
         }
 
         Text {
+            id: gpsTimeout
+            text: "Update Timeout: " + diagnosticsPageInterface.updateTimeout
+            color: "black"
+            font.pixelSize: parent.height * 0.05
+            font.family: "Eurostyle"
+            anchors.top: gpsMessage.bottom
+            anchors.topMargin: parent.height * 0.025
+            anchors.left: parent.left
+        }
+
+        Text {
             id: gpsParamsMessage
             text: diagnosticsPageInterface.gpsParams
             fontSizeMode: Text.VerticalFit
@@ -81,7 +94,7 @@ Item {
             font.family: "Eurostyle"
             width: parent.width
             wrapMode: Text.Wrap
-            anchors.top: gpsMessage.bottom
+            anchors.top: gpsTimeout.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
         }

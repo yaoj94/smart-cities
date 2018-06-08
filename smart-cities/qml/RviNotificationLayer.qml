@@ -133,25 +133,6 @@ Item {
         }
     }
 
-    /*
-    Rectangle {
-        Text {
-            text: v2xsource.AccessError ? "access error" : ""
-        }
-        Text {
-            text: v2xsource.ClosedError ? "closed error" : ""
-        }
-        Text {
-            text: v2xsource.SocketError ? "socket error" : ""
-        }
-        Text {
-            text: v2xsource.UnknownSourceError ? "unknown source error" : ""
-        }
-        Text {
-            text: v2xsource.NoError ? "no errors" : ""
-        }
-    }*/
-
     PositionSource {
         id: v2xsource
         active: true
@@ -221,13 +202,9 @@ Item {
         }
         onUpdateTimeout: {
             gpsActive = false
-            rviRoot.longitude = 0
-            rviRoot.latitude = 0
-            rviRoot.speed = 0
-            rviRoot.heading = 0
+            gpsParams = ""
         }
         onSourceErrorChanged: {
-            // should change to no error when initialized and no errors were found
             gpsError = sourceError
         }
 

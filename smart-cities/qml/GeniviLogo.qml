@@ -57,13 +57,47 @@ Item {
         id: timeDisplay
         text: dateObject.currentTimeString
         color: featureArea.gpsActive ? "white" : colors.alertTint // light red
-        font.pixelSize: parent.height * 0.15
+        fontSizeMode: Text.HorizontalFit
         font.family: "Eurostyle"
         anchors.top: logoContainer.bottom
         anchors.topMargin: parent.height * 0.025
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
+    Text {
+        id: weekdayDisplay
+        text: dateObject.currentWeekdayString
+        color: featureArea.rviConnected ? "white" : featureArea.rviInitialized ? colors.secondaryTint : colors.alertTint
+        fontSizeMode: Text.HorizontalFit
+        font.family: "Eurostyle"
+        anchors.top: timeDisplay.bottom
+        anchors.topMargin: parent.height * 0.00175
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Text {
+        id: monthDisplay
+        text: dateObject.currentMonthString
+        color: "white"
+        fontSizeMode: Text.HorizontalFit
+        font.family: "Eurostyle"
+        anchors.top: weekdayDisplay.bottom
+        anchors.topMargin: parent.height * 0.00175
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Text {
+        id: dayDisplay
+        text: dateObject.currentDayString
+        color: "white"
+        fontSizeMode: Text.HorizontalFit
+        font.family: "Eurostyle"
+        anchors.top: monthDisplay.bottom
+        anchors.topMargin: parent.height * 0.00175
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+/*
     Text {
         id: dateDisplay
         text: dateObject.currentDateString
@@ -73,7 +107,7 @@ Item {
         anchors.top: timeDisplay.bottom
         anchors.topMargin: parent.height * 0.00175
         anchors.horizontalCenter: parent.horizontalCenter
-    }
+    }*/
 
     DateBackend {
         id: dateObject
