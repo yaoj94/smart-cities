@@ -211,10 +211,13 @@ Item {
             gpsParams = paramsString
 
             var serviceName = backendDeviceId + remoteServiceName
-            rviServiceName = serviceName
+            //rviServiceName = serviceName
 
             console.log("SERVICE NAME: " + serviceName + " PARAMS: " + paramsString)
-            RviNode.invokeService(serviceName, paramsString)
+
+            if(rviConnected) {
+                RviNode.invokeService(serviceName, paramsString)
+            }
         }
         onUpdateTimeout: {
             gpsActive = false

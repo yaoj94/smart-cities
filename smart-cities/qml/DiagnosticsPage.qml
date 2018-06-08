@@ -49,17 +49,17 @@ Item {
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
         }
-
+/*
         Text {
             id: serviceName
             text: "Service Name: " + diagnosticsPageInterface.rviServiceName
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: rviStatus.top
+            anchors.top: rviStatus.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
-        }
+        }*/
 
         Text {
             id: gpsMessage
@@ -67,7 +67,7 @@ Item {
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
-            anchors.top: serviceName.bottom
+            anchors.top: rviStatus.bottom
             anchors.topMargin: parent.height * 0.025
             anchors.left: parent.left
         }
@@ -79,6 +79,7 @@ Item {
             color: "black"
             font.pixelSize: parent.height * 0.05
             font.family: "Eurostyle"
+            width: parent.width
             wrapMode: Text.WordWrap
             anchors.top: gpsMessage.bottom
             anchors.topMargin: parent.height * 0.025
