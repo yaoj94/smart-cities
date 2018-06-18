@@ -140,7 +140,7 @@ Item {
         updateInterval: 1000
         onPositionChanged: {
             gpsActive = true
-
+            gpsUpdateTimeout = false;
             gpsTimestamp = new Date(position.timestamp.getTime() - (3600000*7))
 
             var gpsData = []
